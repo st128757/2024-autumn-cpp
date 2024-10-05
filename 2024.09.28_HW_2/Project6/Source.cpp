@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
     scanf_s("%lf", &b);
     scanf_s("%lf", &c);
 
-    double D = b * b - 4 * a * c;
+    double d = b * b - 4 * a * c;
     if (a == b && b == c && c == 0)
     {
         printf("-1");
@@ -25,13 +25,13 @@ int main(int argc, char* argv[])
         printf("1\n");
         printf("%f", -1.0 * c / b);
     }
-    else if (D > 0)
+    else if (d > 0)
     {
         printf("2\n");
-        printf("%f\n", (-1.0 * b - sqrt(D)) / (2.0 * a));
-        printf("%f", (-1.0 * b + sqrt(D)) / (2.0 * a));
+        printf("%f\n", (-1.0 * b - sqrt(d)) / (2.0 * a));
+        printf("%f", (-1.0 * b + sqrt(d)) / (2.0 * a));
     }
-    else if (D == 0)
+    else if (d == 0)
     {
         printf("1\n");
         printf("%f", (-1.0 * b) / (2.0 * a));
