@@ -33,7 +33,7 @@ void randomizeIntArray(int* a, int len, int min = 0, int max = 9)
 	}
 }
 
-void expandIntArrayMinus(int** a, int *len)
+void expandIntArrayMinus(int** a, int* len)
 {
 	int* newArray = initIntArray(*len + 1);
 	if (newArray != nullptr)
@@ -45,6 +45,36 @@ void expandIntArrayMinus(int** a, int *len)
 		free(*a);
 		*a = newArray;
 		(*len)++;
+	}
+}
+
+void removeFromEnd(int** a, int* len)
+{
+	int* newArray = initIntArray(*len - 1);
+	if (newArray != nullptr)
+	{
+		for (int i = 0; i < *len - 1; ++i)
+		{
+			*(newArray + i) = (*a)[i];
+		}
+		free(*a);
+		*a = newArray;
+		(*len)--;
+	}
+}
+
+void removeFromFront(int** a, int* len)
+{
+	int* newArray = initIntArray(*len - 1);
+	if (newArray != nullptr)
+	{
+		for (int i = 0; i < *len - 1; ++i)
+		{
+			*(newArray + i) = (*a)[i + 1];
+		}
+		free(*a);
+		*a = newArray;
+		(*len)--;
 	}
 }
 
@@ -81,6 +111,8 @@ void printMenu()
 	printf("1 - print array\n");
 	printf("2 - add to front\n");
 	printf("3 - add to end\n");
+	printf("4 - remove from front\n");
+	printf("5 - remove from end\n");
 }
 
 int main(int argc, char* argv[])
@@ -97,6 +129,7 @@ int main(int argc, char* argv[])
 		printMenu();
 		int choice = 0;
 		scanf_s("%d", &choice);
+		printf("\n");
 		switch (choice)
 		{
 		case 0:
@@ -106,7 +139,9 @@ int main(int argc, char* argv[])
 		}
 		case 1:
 		{
+			printf("Your Array: ");
 			printIntArray(a, len);
+			printf("\n");
 			break;
 		}
 		case 2:
@@ -114,6 +149,7 @@ int main(int argc, char* argv[])
 			int el = 0;
 			scanf_s("%d", &el);
 			addElementToFront(&a, &len, el);
+			printf("\n");
 			break;
 		}
 		case 3:
@@ -121,6 +157,19 @@ int main(int argc, char* argv[])
 			int el = 0;
 			scanf_s("%d", &el);
 			addElementToEnd(&a, &len, el);
+			printf("\n");
+			break;
+		}
+		case 4:
+		{
+			removeFromFront(&a, &len);
+			printf("\n");
+			break;
+		}
+		case 5:
+		{
+			removeFromEnd(&a, &len);
+			printf("\n");
 			break;
 		}
 		}
