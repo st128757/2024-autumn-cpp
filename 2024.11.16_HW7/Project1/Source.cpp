@@ -172,6 +172,11 @@ int main(int argc, char* argv[])
 			printf("\n");
 			break;
 		}
+		default:
+		{
+			printf("Please, enter the number from the list \n");
+			break;
+		}
 		}
 	}
 
