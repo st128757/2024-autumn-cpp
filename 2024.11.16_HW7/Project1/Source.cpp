@@ -174,7 +174,7 @@ int main(int argc, char* argv[])
 		}
 		default:
 		{
-			printf("Please, enter the number from the list \n");
+			printf("Please, enter the number from the list");
 			break;
 		}
 		}

@@ -4,42 +4,29 @@ int main(int argc, char* argv[])
 {
 	int n = 0;
 	std::cin >> n;
-	int* a = new int[n];
+	int* a = (int*)malloc(n * sizeof(int));
 
 	for (int i = 0; i < n; ++i)
 	{
 		std::cin >> *(a + i);
 	}
 
-	int mem1 = 0;
+	int mini = 0;
 	for (int i = 0; i < n; ++i)
 	{
-		if (*(a + i) % 2 == 1)
+		if (*(a + i) < *(a + mini))
 		{
-			std::cout << *(a + i) << " ";
-			++mem1;
+			mini = i;
 		}
 	}
-	std::cout << "\n";
 
-	int mem2 = 0;
-	for (int i = 0; i < n; ++i)
+	for (int i = mini; i < n; ++i)
 	{
-		if (*(a + i) % 2 == 0)
-		{
-			std::cout << *(a + i) << " ";
-			++mem2;
-		}
+		std::cout << *(a + i) << " ";
 	}
-	std::cout << "\n";
-
-	if (mem2 >= mem1)
+	for (int i = 0; i < mini; ++i)
 	{
-		std::cout << "YES";
-	}
-	else
-	{
-		std::cout << "NO";
+		std::cout << *(a + i) << " ";
 	}
 
 	return 0;
